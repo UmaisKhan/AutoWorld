@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\Processing */
+/* @var $model backend\models\Renting */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Processings', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Rentings', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="processing-view">
+<div class="renting-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'car_name',
             'rent_per_day',
             'car_reg_no',
+            'days_on_rent',
         ],
     ]) ?>
 

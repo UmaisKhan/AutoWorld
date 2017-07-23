@@ -37,6 +37,12 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Cars', 'url' => ['/car/index']],
+        ['label' => 'Customers', 'url' => ['/customer/index']],
+        ['label' => 'Rentings', 'url' => ['/renting/index']],
+        
+        
+          
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
@@ -68,9 +74,13 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Auto World (Car Rental Service) <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right">
+        <strong>
+        Made By : Umais Khan
+        </strong>    
+        </p>
     </div>
 </footer>
 

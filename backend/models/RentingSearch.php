@@ -5,12 +5,12 @@ namespace backend\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Processing;
+use backend\models\Renting;
 
 /**
- * ProcessingSearch represents the model behind the search form about `backend\models\Processing`.
+ * RentingSearch represents the model behind the search form about `backend\models\Renting`.
  */
-class ProcessingSearch extends Processing
+class RentingSearch extends Renting
 {
     /**
      * @inheritdoc
@@ -18,7 +18,7 @@ class ProcessingSearch extends Processing
     public function rules()
     {
         return [
-            [['id', 'rent_per_day'], 'integer'],
+            [['id', 'rent_per_day', 'days_on_rent'], 'integer'],
             [['customer_name', 'car_name', 'car_reg_no'], 'safe'],
         ];
     }
@@ -41,7 +41,7 @@ class ProcessingSearch extends Processing
      */
     public function search($params)
     {
-        $query = Processing::find();
+        $query = Renting::find();
 
         // add conditions that should always apply here
 
@@ -61,6 +61,7 @@ class ProcessingSearch extends Processing
         $query->andFilterWhere([
             'id' => $this->id,
             'rent_per_day' => $this->rent_per_day,
+            'days_on_rent' => $this->days_on_rent,
         ]);
 
         $query->andFilterWhere(['like', 'customer_name', $this->customer_name])

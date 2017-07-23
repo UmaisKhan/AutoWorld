@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Processing;
-use backend\models\ProcessingSearch;
+use backend\models\Renting;
+use backend\models\RentingSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ProcessingController implements the CRUD actions for Processing model.
+ * RentingController implements the CRUD actions for Renting model.
  */
-class ProcessingController extends Controller
+class RentingController extends Controller
 {
     /**
      * @inheritdoc
@@ -20,6 +20,21 @@ class ProcessingController extends Controller
     public function behaviors()
     {
         return [
+          'access' => [
+                        'class' => \yii\filters\AccessControl::className(),
+                        'only' => ['index','create','update','view'],
+                        'rules' => [
+                            // allow authenticated users
+                            [
+                                'allow' => true,
+                                'roles' => ['@'],
+                            ],
+                            // everything else is denied
+                        ],
+                    ],
+
+
+                    
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -30,12 +45,12 @@ class ProcessingController extends Controller
     }
 
     /**
-     * Lists all Processing models.
+     * Lists all Renting models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ProcessingSearch();
+        $searchModel = new RentingSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +60,7 @@ class ProcessingController extends Controller
     }
 
     /**
-     * Displays a single Processing model.
+     * Displays a single Renting model.
      * @param integer $id
      * @return mixed
      */
@@ -57,13 +72,13 @@ class ProcessingController extends Controller
     }
 
     /**
-     * Creates a new Processing model.
+     * Creates a new Renting model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Processing();
+        $model = new Renting();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +90,7 @@ class ProcessingController extends Controller
     }
 
     /**
-     * Updates an existing Processing model.
+     * Updates an existing Renting model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,7 +109,7 @@ class ProcessingController extends Controller
     }
 
     /**
-     * Deletes an existing Processing model.
+     * Deletes an existing Renting model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,15 +122,15 @@ class ProcessingController extends Controller
     }
 
     /**
-     * Finds the Processing model based on its primary key value.
+     * Finds the Renting model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Processing the loaded model
+     * @return Renting the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Processing::findOne($id)) !== null) {
+        if (($model = Renting::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

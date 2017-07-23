@@ -10,7 +10,16 @@ use yii\grid\GridView;
 $this->title = 'Cars';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="car-index">
+
+<style type="text/css">
+    
+    body{
+    background-color: #F2F2F2;
+    color: #000;
+}
+
+</style>
+<div class="car-index" align="center">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

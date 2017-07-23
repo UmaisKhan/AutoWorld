@@ -41,7 +41,7 @@ class Car extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'reg_no' => 'Reg No',
+            'reg_no' => 'Registration No',
             'name' => 'Name',
             'make' => 'Make',
             'color' => 'Color',
